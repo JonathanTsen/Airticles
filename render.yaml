@@ -1,9 +1,14 @@
 services:
   - type: web
     name: airticles-landing
-    env: static
-    buildCommand: echo "Static site - no build needed"
-    staticPublishPath: ./
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
     routes:
       - type: rewrite
         source: /*
